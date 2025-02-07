@@ -1,0 +1,21 @@
+{
+    "python.analysis.autoImportCompletions": true,
+    "files.exclude": {
+        "**/__pycache__/": true
+    },
+    "cSpell.words": [
+        "viewsets"
+    ],
+    "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true,
+    },
+    "black-formatter.args":[  "--line-length=120"],
+    "autopep8.args": [
+        "--max-line-length=120"
+    ],
+    // "terminal.integrated.fontFamily": "MesloLGM Nerd Font",
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+    "terminal.integrated.fontLigatures": true,
+    
+}
