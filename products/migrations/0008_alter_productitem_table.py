@@ -30,8 +30,8 @@ class Migration(migrations.Migration):
                 'db_table': 'productitem',
             },
         ),
-        # migrations.AlterModelTable(
-        #     name='productitem',
-        #     table=None,
-        # ),
+        migrations.AlterModelTable(
+            name='productitem',
+            table=None,
+        ),
     ]

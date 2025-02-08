@@ -43,7 +43,9 @@ DEBUG = env.bool('DEBUG')
 #     "*:*"
 
 # ]
-ALLOWED_HOSTS = env('ALLOWED_HOSTS').strip().split(',')
+# ALLOWED_HOSTS = env('ALLOWED_HOSTS').strip().split(',')
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').replace(" ", '').split(',')
+# ALLOWED_HOSTS = [host.strip() for host in env('ALLOWED_HOSTS').split(',')]
 
 
 # Application definition
@@ -85,6 +87,9 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     # defaults
     "django.middleware.security.SecurityMiddleware",
+    # static
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # defaults
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -98,8 +103,7 @@ MIDDLEWARE = [
     # 'silk.middleware.SilkyMiddleware',
     # camel case middleware
     'djangorestframework_camel_case.middleware.CamelCaseMiddleWare',
-    # static
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 CORS_ALLOW_ALL_ORIGINS = env.bool('CORS_ALLOW_ALL_ORIGINS')
@@ -172,7 +176,8 @@ SPECTACULAR_SETTINGS = {
 
 # Simple JWT settings config
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('Bearer', 'JWT',),
+    # 'AUTH_HEADER_TYPES': ('Bearer', 'JWT',),
+    'AUTH_HEADER_TYPES': ('Bearer', ),
     'ACCESS_TOKEN_LIFETIME': timedelta(
         days=env.int('ACCESS_TOKEN_LIFETIME_DAYS')
     ),
@@ -312,6 +317,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
