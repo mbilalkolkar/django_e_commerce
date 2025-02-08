@@ -31,9 +31,9 @@ SECRET_KEY = env('SECRET_KEY')
 # DEBUG = True
 DEBUG = env.bool('DEBUG')
 
-# INTERNAL_IPS = [
-#     '127.0.0.1',
-# ]
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 # ALLOWED_HOSTS = [
 #     "localhost:3000",
 #     "localhost",
