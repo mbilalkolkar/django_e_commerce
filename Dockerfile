@@ -14,4 +14,9 @@ COPY . /app/
 RUN apk add --no-cache python3~=3.12
 #RUN uv sync
 
+# RUN uv run python manage.py  makemigrations --noinput
+RUN uv run python manage.py  migrate --noinput
+RUN uv run python manage.py collectstatic --noinput
+
+
 CMD ["uv", "run", "gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]
