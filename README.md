@@ -17,6 +17,9 @@ above steps same as :
     python manage.py migrate
     python manage.py showmigrations
 
+# generate staticfiles
+    python manage.py collectstatic
+
 # create superuser
     python manage.py createsuperuser --username admin --email mbk@mail.com
 
@@ -37,7 +40,9 @@ above steps same as :
     - change managed to true and run migrations to new db or same one
         managed = True
 
-
+# watch logs
+    watch -n 1 tail -n 50 debug.log
+    
 # Doc ref:
     - ORM:
         https://docs.djangoproject.com/en/3.1/ref/models/fields/
